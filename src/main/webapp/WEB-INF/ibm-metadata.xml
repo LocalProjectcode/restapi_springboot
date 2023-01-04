@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ibm-metadata>
+  <annotated-classes name="org.springframework.web.context.ContextLoader"/>
+  <annotated-classes name="org.springframework.web.servlet.DispatcherServlet"/>
+  <annotated-classes name="org.springframework.web.servlet.HttpServletBean"/>
+  <annotated-classes name="org.springframework.web.servlet.FrameworkServlet"/>
+  <annotated-classes name="org.springframework.web.context.ContextLoaderListener"/>
+</ibm-metadata>

@@ -1,0 +1,11 @@
+pipelineType: "java"
+buildTool: "gradle"
+appName: "api"
+earFileName: "api.ear"
+localServer:
+prodServer: odi004appp01.oddc.chrysler.com(for reference)
+deployType: "WAS85"
+changeNumber: ""
+pythonInterpreter: "/usr/bin/python3"
+emailRecipients: 
+

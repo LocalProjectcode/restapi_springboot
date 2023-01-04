@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:mvc="http://www.springframework.org/schema/mvc" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:aop="http://www.springframework.org/schema/aop" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:p="http://www.springframework.org/schema/p" xmlns:jee="http://www.springframework.org/schema/jee"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+        http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop.xsd 
+        http://www.springframework.org/schema/jee http://www.springframework.org/schema/jee/spring-jee.xsd">
+        
+        <!--  <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+			<property name="jndiName" value="java:comp/env/jndi/CVPRTDS"></property>
+		 </bean> -->
+
+	<!-- <context:component-scan base-package="com.fca.lop*" /> -->
+<context:component-scan base-package="com.test.api.*" />
+
+   <mvc:default-servlet-handler />
+   <mvc:annotation-driven  />
+
+	<!-- <context:property-placeholder location="file:/clocal/SpringBoot/API/properties/SqlQueries.properties" system-properties-mode="OVERRIDE" ignore-unresolvable="true"/> -->
+	
+	<context:property-placeholder location="file:C:/VehicleinfoAPI/cvp-vehicleinfo-javaapp-7086-master/radioSwap/src/main/resources/SqlQueries.properties" system-properties-mode="OVERRIDE" ignore-unresolvable="true"/>
+	
+	<!-- Datasource configuration start -->
+	<!-- <jee:jndi-lookup id="jndiSource" jndi-name="jdbc/ASD21_15_DDIAUTH" resource-ref="true" /> -->
+	<!-- <jee:jndi-lookup id="jndiSource" jndi-name="${DDIAUTHAPI_DS_NAME}" resource-ref="true" /> -->
+	
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.UserCredentialsDataSourceAdapter"> 
+		<property name="targetDataSource" ref="jndiSource" />
+	</bean> -->
+	
+	<!-- <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="com.ibm.db2.jcc.DB2Driver" />
+
+        <property name="url" value="jdbc:db2://shi014dlrt01.shdc.chrysler.com:28100/ASD21" />
+
+        <property name="username" value="ddiapi01" />
+
+        <property name="password" value="Mv3lE2ZhRoBwra6L" />
+    </bean> -->
+    
+	<!-- cvp-test-DB -->
+	
+	<!-- <bean id="dataSource" class="com.ibm.db2.jcc.DB2DataSource">
+		<property name="DatabaseName" value="CVPTEST" />
+		<property name="DriverType" value="4" />
+		<property name="ServerName" value="shi009cvpt04.shdc.chrysler.com" />
+		<property name="PortNumber" value="25770" />
+		<property name="CurrentSchema" value="CVP" />
+		<property name="User" value="cvpinput" />
+		<property name="Password" value="usstest12" />
+	</bean> -->
+	
+	<!-- cvp-dev-DB -->
+	
+	<!-- H2 DB config -->
+	<bean id="dataSource" class="com.ibm.db2.jcc.DB2DataSource">
+		<property name="DatabaseName" value="CVPDEV" />
+		<property name="DriverType" value="4" />
+		<property name="ServerName" value="cli007cpsd01.cldc.chrysler.com" />
+		<property name="PortNumber" value="25590" />
+		<property name="CurrentSchema" value="CVP" />
+		<property name="User" value="cvpinput" />
+		<property name="Password" value="usstest12" />
+	</bean>
+    
+	
+	
+	<bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">  
+		<property name="dataSource" ref="dataSource"></property>  
+	</bean>  
+	<bean id="namedParameterJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">  
+		<constructor-arg ref="dataSource"/> 
+	</bean> 
+</beans>

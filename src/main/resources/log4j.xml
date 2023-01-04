@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
+<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+
+	<!-- Appenders -->
+	
+	<appender name="stdout" class="org.apache.log4j.ConsoleAppender">
+		<layout class="org.apache.log4j.PatternLayout">
+			Pattern to output the caller's file name and line number
+			<param name="ConversionPattern" value="[%d{MMM dd, yyyy HH:mm:ss}] %-5p %m%n" />
+		</layout>
+		<appender-ref ref="console"/>
+	</appender>
+	
+	<!-- <appender name="idlLoggerAppender" class="org.apache.log4j.AsyncAppender">
+        <param name="BufferSize" value="256"/>
+        <layout class="org.apache.log4j.PatternLayout">
+            <param name="ConversionPattern" value="%-4r [%d] %-5p %c [%X{AUTH_ID}] %x - %m%n"/>
+        </layout>
+        <appender-ref ref="rolling"/>
+    </appender> -->
+
+	<appender name="rolling" class="org.apache.log4j.RollingFileAppender">
+		<!--<param name="file" value="/clocal/www/logs/WAS/WebSphere7/upic/idl2.log" />-->
+		<!-- <param name="file" value="C://RSA/otp.log" /> -->
+		<param name="file" value="C://RahulKT/springboot/src/main/resources/restApi.log" />
+		<!-- <param name="file" value="/clocal/CVP/TuSwapAPI/logs/radioSwapLogs.log" /> -->
+		<param name="append" value="true" />
+		<param name="MaxFileSize" value="10MB" />
+		<!-- Keep one backup file -->
+		<param name="MaxBackupIndex" value="20" />
+		<layout class="org.apache.log4j.PatternLayout">
+			<param name="ConversionPattern" value="[%d{MMM dd, yyyy HH:mm:ss}] %-5p %m%n" />
+		</layout>
+	</appender>
+
+	<logger name="org.springframework.beans">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.binding">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.jdbc">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.transaction">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.orm">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.web">
+		<level value="error" />
+	</logger>
+
+	<logger name="org.springframework.webflow">
+		<level value="error" />
+	</logger>
+	
+	<logger name="org.springframework.security">
+		<level value="error" />
+	</logger>
+	
+	<logger name="com.fca.cvp">
+		<level value="debug" />
+	</logger>
+	
+	
+	<!-- Root Logger -->
+	<root>
+		<priority value="debug" />
+		<appender-ref ref="rolling"/>
+		<appender-ref ref="stdout"/> 
+	</root>
+
+</log4j:configuration>

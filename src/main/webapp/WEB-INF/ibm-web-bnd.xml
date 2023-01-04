@@ -1,0 +1,9 @@
+<webappbnd:WebAppBinding xmi:version="2.0"
+xmlns:xmi="http://www.omg.org/XMI"
+xmlns:webappbnd="webappbnd.xmi"
+xmlns:webapplication="webapplication.xmi" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+xmi:id="WebAppBinding_1"
+virtualHostName="apiintraVH">
+<resource-ref binding-name="jndi/APIDS" name="jndi/APIDS"/>
+<webapp href="WEB-INF/web.xml#WebApp_1"/>
+</webappbnd:WebAppBinding>
